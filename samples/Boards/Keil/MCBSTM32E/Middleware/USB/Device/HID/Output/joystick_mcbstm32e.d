@@ -1,0 +1,11 @@
+.\output\joystick_mcbstm32e.o: C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Boards\Keil\MCBSTM32E\Common\Joystick_MCBSTM32E.c
+.\output\joystick_mcbstm32e.o: C:\Keil_v5\ARM\PACK\Keil\MDK-Middleware\7.4.1\Board\Board_Joystick.h
+.\output\joystick_mcbstm32e.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\joystick_mcbstm32e.o: C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\RTE_Driver\GPIO_STM32F10x.h
+.\output\joystick_mcbstm32e.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
+.\output\joystick_mcbstm32e.o: C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\stm32f10x.h
+.\output\joystick_mcbstm32e.o: .\RTE\_STM32F103_Flash\RTE_Components.h
+.\output\joystick_mcbstm32e.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\core_cm3.h
+.\output\joystick_mcbstm32e.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_compiler.h
+.\output\joystick_mcbstm32e.o: C:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include\cmsis_armcc.h
+.\output\joystick_mcbstm32e.o: C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include\system_stm32f10x.h
