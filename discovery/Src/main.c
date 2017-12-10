@@ -112,26 +112,17 @@ int main(void)
   MX_USB_DEVICE_Init();
   MX_USART2_UART_Init();
   MX_TIM2_Init();
+	
+	HAL_TIM_Base_Start_IT(&htim2);
 
   /* USER CODE BEGIN 2 */
-	uint8_t dataToSend[5];
+	uint8_t dataToSend[65];
 	dataToSend[0] = 1;
   dataToSend[1] = 2;
   dataToSend[2] = 3;
   dataToSend[3] = 4;
 	dataToSend[4] = 5;
 	
-	
-	uint8_t dataToSend2[9];
-	dataToSend2[0] = 3;
-  dataToSend2[1] = 22;
-  dataToSend2[2] = 33;
-  dataToSend2[3] = 44;
-	dataToSend2[4] = 55;
-	dataToSend2[5] = 55;
-	dataToSend2[6] = 55;
-	dataToSend2[7] = 55;
-	dataToSend2[8] = 66;
 	
   /* USER CODE END 2 */
 
@@ -143,14 +134,8 @@ int main(void)
   /* USER CODE END WHILE */
 		//dataToSend[1]++;
   /* USER CODE BEGIN 3 */
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_6);
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_7);
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8);
-		HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_9);
 		HAL_Delay(100);
-		USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, dataToSend, 5);
-		HAL_Delay(100);
-		USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, dataToSend2, 9);
+		USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, dataToSend, 65);
   }
   /* USER CODE END 3 */
 
@@ -217,9 +202,9 @@ static void MX_TIM2_Init(void)
   TIM_MasterConfigTypeDef sMasterConfig;
 
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 0;
+  htim2.Init.Prescaler =47999;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 0;
+  htim2.Init.Period = 499;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)

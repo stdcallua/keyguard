@@ -93,7 +93,20 @@
  */
 __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DESC_SIZE] __ALIGN_END =
 {
-  /* USER CODE BEGIN 0 */ 
+	/*
+	0x06, 0x00, 0xFF,            // (GLOBAL) USAGE_PAGE         0xFF00 Vendor-defined 
+	0x09, 0x01,                  //   (LOCAL)  USAGE              0xFF000001  
+  0xA1, 0x01,                  // (MAIN)   COLLECTION         0x01 Application (Usage=0x0: Page=, Usage=, Type=) <-- Warning: USAGE type should be CA (Application)
+	0x85, 0x01,                  //   (GLOBAL) REPORT_ID          0x01 (1) 
+	0x09, 0x01,                  //   (LOCAL)  USAGE              0xFF000001  
+  0x15, 0x00,                  //   (GLOBAL) LOGICAL_MINIMUM    0x00 (0) <-- Redundant: LOGICAL_MINIMUM is already 0
+  0x26, 0xFF, 		             //   (GLOBAL) LOGICAL_MAXIMUM    0x00FF (255) 
+  0x75, 0x08,                  //   (GLOBAL) REPORT_SIZE        0x08 (8) Number of bits per field 
+  0x95, 0x40,                  //   (GLOBAL) REPORT_COUNT       0x40 (64) Number of fields 
+  0x81, 0x82,                  //   (MAIN)   INPUT              0x00000002 (64 fields x 8 bits) 0=Data 1=Variable 0=Absolute 0=NoWrap 0=Linear 0=PrefState 0=NoNull 0=NonVolatile 0=Bitmap 
+  0xC0                         // (MAIN)   END_COLLECTION     Application
+	*/
+	
 		0x06, 0x00, 0xff,              // 	USAGE_PAGE (Generic Desktop)
     0x09, 0x01,                    // 	USAGE (Vendor Usage 1)
     // System Parameters
@@ -101,28 +114,18 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
     0x85, 0x01,                    //   REPORT_ID (1)
     0x09, 0x01,                    //   USAGE (Vendor Usage 1)
     0x75, 0x08,                    //   REPORT_SIZE (8)
-    0x95, 4, 	                     //   REPORT_COUNT (4)
+    0x95, 0x40, 	                     //   REPORT_COUNT (4)
     0xb1, 0x82,                    //   FEATURE (Data,Var,Abs,Vol)
     0x85, 0x01,                    //   REPORT_ID (1)
     0x09, 0x01,                    //   USAGE (Vendor Usage 1)
     0x91, 0x82,                    //   OUTPUT (Data,Var,Abs,Vol)
 	
-		0x85, 0x03,                    //   REPORT_ID (1)
-    0x09, 0x03,                    //   USAGE (Vendor Usage 1)
+    0x85, 0x02,                    //   REPORT_ID (2)
+    0x09, 0x02,                    //   USAGE (Vendor Usage 2)
     0x75, 0x08,                    //   REPORT_SIZE (8)
-    0x95, 8, 	                     //   REPORT_COUNT (4)
-    0xb1, 0x82,                    //   FEATURE (Data,Var,Abs,Vol)
-    0x85, 0x03,                    //   REPORT_ID (1)
-    0x09, 0x03,                    //   USAGE (Vendor Usage 1)
-    0x91, 0x82,                    //   OUTPUT (Data,Var,Abs,Vol)
- 
-    0x85, 0x02,                    //   REPORT_ID (4)
-    0x09, 0x02,                    //   USAGE (Vendor Usage 4)
-    0x75, 0x08,                    //   REPORT_SIZE (8)
-    0x95, 4, 	                     //   REPORT_COUNT (4)
+    0x95, 0x40, 	                     //   REPORT_COUNT (4)
     0x81, 0x82,                    //   INPUT (Data,Var,Abs,Vol)
-  /* USER CODE END 0 */ 
-  0xC0    /*     END_COLLECTION	             */
+		0xC0    
    
 }; 
 
