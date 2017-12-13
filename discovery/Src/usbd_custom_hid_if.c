@@ -93,6 +93,24 @@
  */
 __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DESC_SIZE] __ALIGN_END =
 {
+	0x06, 0x00, 0xff,              // USAGE_PAGE (Vendor Defined Page 1)
+    0x09, 0x01,                    // USAGE (Vendor Usage 1)
+    0xa1, 0x01,                    // COLLECTION (Application)
+    0x09, 0x01,                    //   USAGE (Vendor Usage 1)
+    0x15, 0x00,                    //   LOGICAL_MINIMUM (0)
+    0x26, 0xff, 0x00,              //   LOGICAL_MAXIMUM (255)
+    0x95, 0x40,                    // REPORT_COUNT (64)
+    0x75, 0x08,                    //   REPORT_SIZE (8)
+    0x81, 0x02,                    //   INPUT (Data,Var,Abs)
+    0x09, 0x01,                    //   USAGE (Vendor Usage 1)
+    0x15, 0x00,                    // LOGICAL_MINIMUM (0)
+    0x26, 0xff, 0x00,              //   LOGICAL_MAXIMUM (255)
+    0x95, 0x40,                    //   REPORT_COUNT (64)
+    0x75, 0x08,                    //   REPORT_SIZE (8)
+    0x91, 0x02,                    //   OUTPUT (Data,Var,Abs)
+    0xc0                           //         END_COLLECTION
+	
+	
 	/*
 	0x06, 0x00, 0xFF,            // (GLOBAL) USAGE_PAGE         0xFF00 Vendor-defined 
 	0x09, 0x01,                  //   (LOCAL)  USAGE              0xFF000001  
@@ -106,7 +124,7 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
   0x81, 0x82,                  //   (MAIN)   INPUT              0x00000002 (64 fields x 8 bits) 0=Data 1=Variable 0=Absolute 0=NoWrap 0=Linear 0=PrefState 0=NoNull 0=NonVolatile 0=Bitmap 
   0xC0                         // (MAIN)   END_COLLECTION     Application
 	*/
-	
+	/*
 		0x06, 0x00, 0xff,              // 	USAGE_PAGE (Generic Desktop)
     0x09, 0x01,                    // 	USAGE (Vendor Usage 1)
     // System Parameters
@@ -125,7 +143,7 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
     0x75, 0x08,                    //   REPORT_SIZE (8)
     0x95, 0x40, 	                     //   REPORT_COUNT (4)
     0x81, 0x82,                    //   INPUT (Data,Var,Abs,Vol)
-		0xC0    
+		0xC0    */
    
 }; 
 
@@ -139,6 +157,7 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
   * @{
   */ 
   extern USBD_HandleTypeDef hUsbDeviceFS;
+	extern uint8_t dataToSend[65];
 /* USER CODE BEGIN EXPORTED_VARIABLES */
 /* USER CODE END EXPORTED_VARIABLES */
 
@@ -196,9 +215,39 @@ static int8_t CUSTOM_HID_DeInit_FS(void)
   * @param  state: event state
   * @retval Result of the operation: USBD_OK if all operations are OK else USBD_FAIL
   */
+
+uint8_t SendBuffer[65];
+uint8_t ReceiveBuffer[65];
+
+
 static int8_t CUSTOM_HID_OutEvent_FS  (uint8_t event_idx, uint8_t state)
 { 
   /* USER CODE BEGIN 6 */ 
+	USBD_CUSTOM_HID_HandleTypeDef     *hhid = (USBD_CUSTOM_HID_HandleTypeDef*)hUsbDeviceFS.pClassData;  
+	for (uint8_t i = 0; i < 65; i++)
+  {
+    ReceiveBuffer[i] = hhid->Report_buf[i];
+  }
+//  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_6);
+	//uint8_t dataToSend[65];
+	SendBuffer[0] = ReceiveBuffer[0]++;
+  SendBuffer[1] = ReceiveBuffer[1]++;
+	SendBuffer[2] = ReceiveBuffer[2]++;
+	SendBuffer[3] = 0xff;
+	SendBuffer[4] = ReceiveBuffer[4]++;
+	
+	
+	uint8_t dataToSend[65];
+	dataToSend[0] = 1;
+  dataToSend[1] = 2;
+  dataToSend[2] = 3;
+  dataToSend[3] = 4;
+	dataToSend[4] = 5;
+	
+	//USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, &dataToSend[0], 16);
+	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_7);
+	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8);
+	HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_9);
   return (0);
   /* USER CODE END 6 */ 
 }

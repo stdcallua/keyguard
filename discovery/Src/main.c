@@ -132,10 +132,9 @@ int main(void)
   while (1)
   {
   /* USER CODE END WHILE */
-		//dataToSend[1]++;
   /* USER CODE BEGIN 3 */
 		HAL_Delay(100);
-		USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, dataToSend, 65);
+		//USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, dataToSend, 65);
   }
   /* USER CODE END 3 */
 
