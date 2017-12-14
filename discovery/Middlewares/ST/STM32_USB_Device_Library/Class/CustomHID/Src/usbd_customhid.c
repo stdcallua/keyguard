@@ -314,7 +314,9 @@ static uint8_t  USBD_CUSTOM_HID_Setup (USBD_HandleTypeDef *pdev,
   uint16_t len = 0;
   uint8_t  *pbuf = NULL;
   USBD_CUSTOM_HID_HandleTypeDef     *hhid = (USBD_CUSTOM_HID_HandleTypeDef*)pdev->pClassData;
-
+	//uint8_t buffer[USBD_CUSTOMHID_INREPORT_BUF_SIZE];
+  //int8_t state;
+	
   switch (req->bmRequest & USB_REQ_TYPE_MASK)
   {
   case USB_REQ_TYPE_CLASS :  
@@ -347,6 +349,33 @@ static uint8_t  USBD_CUSTOM_HID_Setup (USBD_HandleTypeDef *pdev,
       USBD_CtlPrepareRx (pdev, hhid->Report_buf, (uint8_t)(req->wLength));
       
       break;
+		
+		case CUSTOM_HID_REQ_GET_REPORT:
+			/*len = sizeof(buffer) - 1;
+      state = ((USBD_CUSTOM_HID_ItfTypeDef *)pdev->pUserData)->GetFeature(req->wValue & 0xff,
+                                                                          &buffer[1],
+                                                                          &len);
+      if(state == USBD_OK)
+      {
+         // Copy ReportID and adjust length as ID must also be considered
+         buffer[0] = req->wValue & 0xff;
+         len++;
+
+         // Length MUST NOT be bigger than USBD_CUSTOMHID_INREPORT_BUF_SIZE
+         if(len > USBD_CUSTOMHID_INREPORT_BUF_SIZE)
+         {
+            len = USBD_CUSTOMHID_INREPORT_BUF_SIZE;
+         }
+         USBD_CtlSendData (pdev,
+                           buffer,
+                           len);
+      }
+      else
+      {
+         USBD_CtlError (pdev, req);
+         return USBD_FAIL;
+      }*/
+		break;
     default:
       USBD_CtlError (pdev, req);
       return USBD_FAIL; 

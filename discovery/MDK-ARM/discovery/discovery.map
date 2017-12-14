@@ -1443,7 +1443,7 @@ Image Symbol Table
     USBD_CUSTOM_HID_Init                     0x080025a5   Thumb Code    80  usbd_customhid.o(i.USBD_CUSTOM_HID_Init)
     i.USBD_CUSTOM_HID_RegisterInterface      0x080025f4   Section        0  usbd_customhid.o(i.USBD_CUSTOM_HID_RegisterInterface)
     i.USBD_CUSTOM_HID_Setup                  0x08002608   Section        0  usbd_customhid.o(i.USBD_CUSTOM_HID_Setup)
-    USBD_CUSTOM_HID_Setup                    0x08002609   Thumb Code   180  usbd_customhid.o(i.USBD_CUSTOM_HID_Setup)
+    USBD_CUSTOM_HID_Setup                    0x08002609   Thumb Code   178  usbd_customhid.o(i.USBD_CUSTOM_HID_Setup)
     i.USBD_ClrClassConfig                    0x080026c0   Section        0  usbd_core.o(i.USBD_ClrClassConfig)
     i.USBD_CtlContinueRx                     0x080026d0   Section        0  usbd_ioreq.o(i.USBD_CtlContinueRx)
     i.USBD_CtlContinueSendData               0x080026e0   Section        0  usbd_ioreq.o(i.USBD_CtlContinueSendData)
@@ -1973,12 +1973,12 @@ Image component sizes
        652          0          0          0          0       8832   usbd_core.o
       1008         34          0          1          0       7532   usbd_ctlreq.o
        116         12          0         50        130       2172   usbd_custom_hid_if.o
-       450         24          0        126          0       8250   usbd_customhid.o
+       450         28          0        126          0       8246   usbd_customhid.o
        220        124          0         50        512       8991   usbd_desc.o
        140          0          0          0          0       4132   usbd_ioreq.o
 
     ----------------------------------------------------------------------
-     12296        834        248        240       3096     615140   Object Totals
+     12296        838        248        240       3096     615136   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         16          0          0          5          6          0   (incl. Padding)
 
@@ -2018,9 +2018,9 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     12428        850        248        240       3096     609228   Grand Totals
-     12428        850        248        240       3096     609228   ELF Image Totals
-     12428        850        248        240          0          0   ROM Totals
+     12428        854        248        240       3096     609224   Grand Totals
+     12428        854        248        240       3096     609224   ELF Image Totals
+     12428        854        248        240          0          0   ROM Totals
 
 ==============================================================================
 

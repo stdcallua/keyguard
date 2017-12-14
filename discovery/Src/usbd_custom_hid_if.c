@@ -171,7 +171,6 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 static int8_t CUSTOM_HID_Init_FS     (void);
 static int8_t CUSTOM_HID_DeInit_FS   (void);
 static int8_t CUSTOM_HID_OutEvent_FS (uint8_t event_idx, uint8_t state);
- 
 
 USBD_CUSTOM_HID_ItfTypeDef USBD_CustomHID_fops_FS = 
 {
@@ -278,4 +277,7 @@ static int8_t USBD_CUSTOM_HID_SendReport_FS ( uint8_t *report,uint16_t len)
 /**
   * @}
   */  
+	
+	
+	
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
