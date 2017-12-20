@@ -223,10 +223,12 @@ static int8_t CUSTOM_HID_OutEvent_FS  (uint8_t event_idx, uint8_t state)
 { 
   /* USER CODE BEGIN 6 */ 
 	USBD_CUSTOM_HID_HandleTypeDef     *hhid = (USBD_CUSTOM_HID_HandleTypeDef*)hUsbDeviceFS.pClassData;  
+	HAL_Delay(30);
 	for (uint8_t i = 0; i < 65; i++)
   {
     ReceiveBuffer[i] = hhid->Report_buf[i];
   }
+	HAL_Delay(30);
 //  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_6);
 	//uint8_t dataToSend[65];
 	SendBuffer[0] = ReceiveBuffer[0]++;

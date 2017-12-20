@@ -166,10 +166,10 @@ int main(int argc, char* argv[])
 	while (/*res == 0*/true) {
 		buf[0] = 0x1;
 		char v = rand() % 256;
-		buf[1] = rand() % 256;;
-		buf[2] = rand() % 256;;
-		buf[3] = rand() % 256;;
-		buf[4] = rand() % 256;;
+		buf[1] = rand() % 256;
+		buf[2] = rand() % 256;
+		buf[3] = rand() % 256;
+		buf[4] = rand() % 256;
 		//0x%02hhx
 		printf("Data wright:\n   ");
 		for (i = 0; i < 16; i++)
@@ -180,7 +180,7 @@ int main(int argc, char* argv[])
 			printf("Unable to write()\n");
 			printf("Error: %ls\n", hid_error(handle));
 		}
-
+		Sleep(100);
 		res = hid_read(handle, buf, sizeof(buf));
 		if (res == 0)
 			printf("waiting...\n");
@@ -193,7 +193,7 @@ int main(int argc, char* argv[])
 			printf("%d ", buf[i]);
 		printf("\n");
 		#ifdef WIN32
-		Sleep(500);
+		Sleep(400);
 		#else
 		usleep(500*1000);
 		#endif
